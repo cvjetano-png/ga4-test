@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GA4 Mock Event Test Page</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-652Z7G2TSM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      // Forces DebugView mode on page load
+      gtag('config', 'G-652Z7G2TSM', { 'debug_mode': true });
+    </script>
+</head>
+<body style="font-family: Arial, sans-serif; text-align: center; margin-top: 50px;">
+
+    <h1>GA4 E-commerce Test Page</h1>
+    <p>Click the buttons below to fire test events into GA4 DebugView.</p>
+
+    <!-- Button 1: Custom Mock Event -->
+    <button onclick="sendMockEvent()" style="padding: 12px 20px; margin: 10px; font-size: 16px; cursor: pointer;">
+        Trigger Mock Event
+    </button>
+
+    <!-- Button 2: Standard Purchase Event with Value -->
+    <button onclick="sendPurchaseEvent()" style="padding: 12px 20px; margin: 10px; font-size: 16px; cursor: pointer; background-color: #4CAF50; color: white; border: none; border-radius: 4px;">
+        Trigger Standard Purchase ($29.99)
+    </button>
+
+    <script>
+      // Sends custom mock event
+      function sendMockEvent() {
+        gtag('event', 'mock_event_test', {
+          'event_category': 'test',
+          'mock_action': 'add_to_cart'
+        });
+        alert('Mock Event Sent!');
+      }
+
+      // Sends standard purchase event with value & currency
+      function sendPurchaseEvent() {
+        gtag('event', 'purchase', {
+          'transaction_id': 'TEST_TRANS_1001',
+          'value': 29.99,
+          'currency': 'USD',
+          'items': [{
+            'item_id': 'ITEM_001',
+            'item_name': 'Test Product',
+            'price': 29.99,
+            'quantity': 1
+          }]
+        });
+        alert('Purchase Event Sent!');
+      }
+    </script>
+
+</body>
+</html>
