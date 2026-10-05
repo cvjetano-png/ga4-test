@@ -1,65 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>GA4 Audience Exclusion Test Page</title>
+  <meta charset="UTF-8">
+  <title>GA4 Audience Exclusion Test Page</title>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-652Z7G2TSM"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-652ZZ7G2TSM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-      // Enables DebugView mode directly
-      gtag('config', 'G-652Z7G2TSM', { 'debug_mode': true });
-    </script>
+    // Enables DebugView mode directly
+    gtag('config', 'G-652ZZ7G2TSM', { 'debug_mode': true });
+  </script>
 </head>
 <body style="font-family: Arial, sans-serif; text-align: center; margin-top: 50px;">
 
-    <h1>GA4 Audience Exclusion Test</h1>
-    <p>Follow the steps below in sequence to test your inclusion and exclusion rules.</p>
+  <h1>GA4 Audience Exclusion Test</h1>
+  <p>Follow the steps below to sequence in your target and exclusion rules.</p>
 
-    <!-- STEP 1: INCLUDE EVENT -->
-    <div style="margin-bottom: 30px;">
-        <h3>Step 1: Fire Include Event</h3>
-        <button onclick="sendAddToCart()" style="padding: 12px 24px; font-size: 16px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
-            1. Trigger add_to_cart
-        </button>
-    </div>
+  <!-- STEP 1: INCLUDE EVENT -->
+  <div style="margin-bottom: 20px;">
+    <h3>Step 1: Fire Include Event</h3>
+    <button onclick="sendAddToCart()" style="padding: 12px 24px; font-size: 16px; background-color: #007bff; color: white; border: none; cursor: pointer;">
+      Trigger add_to_cart
+    </button>
+  </div>
 
-    <!-- STEP 2: EXCLUDE EVENT -->
-    <div>
-        <h3>Step 2: Fire Exclude Event</h3>
-        <button onclick="sendPurchase()" style="padding: 12px 24px; font-size: 16px; background-color: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer;">
-            2. Trigger purchase ($29.99)
-        </button>
-    </div>
+  <!-- STEP 2: EXCLUDE EVENT -->
+  <div>
+    <h3>Step 2: Fire Exclude Event</h3>
+    <button onclick="sendPurchase()" style="padding: 12px 24px; font-size: 16px; background-color: #28a745; color: white; border: none; cursor: pointer;">
+      Trigger purchase
+    </button>
+  </div>
 
-    <script>
-      // Step 1: Fire Add to Cart with Mock Parameter
-      function sendAddToCart() {
-        gtag('event', 'add_to_cart', {
-          'mock_event_test': 'add_to_cart',
-          'value': 29.99,
-          'currency': 'USD',
-          'items': [{ 'item_id': 'ITEM_001', 'item_name': 'Test Item' }]
-        });
-        alert('Step 1 Done: add_to_cart sent!');
-      }
+  <script>
+    // Step 1: Fire Add to Cart with Mock Parameter
+    function sendAddToCart() {
+      gtag('event', 'add_to_cart', {
+        'mock_event_test': 'add_to_cart',
+        'value': 29.99,
+        'currency': 'USD',
+        'items': [{ 'item_id': 'ITEM_001', 'item_name': 'Test Item' }]
+      });
+      alert('Step 1 Done: add_to_cart sent!');
+    }
 
-      // Step 2: Fire Purchase with Mock Parameter
-      function sendPurchase() {
-        gtag('event', 'purchase', {
-          'transaction_id': 'TRANS_' + Date.now(),
-          'mock_event_test': 'purchase',
-          'value': 29.99,
-          'currency': 'USD',
-          'items': [{ 'item_id': 'ITEM_001', 'item_name': 'Test Item' }]
-        });
-        alert('Step 2 Done: purchase sent!');
-      }
-    </script>
+    // Step 2: Fire Purchase with Mock Parameter
+    function sendPurchase() {
+      gtag('event', 'purchase', {
+        'transaction_id': 'TRANS_' + Date.now(),
+        'mock_event_test': 'purchase',
+        'value': 29.99,
+        'currency': 'USD',
+        'items': [{ 'item_id': 'ITEM_001', 'item_name': 'Test Item' }]
+      });
+      alert('Step 2 Done: purchase sent!');
+    }
+  </script>
 
 </body>
 </html>
