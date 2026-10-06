@@ -1,66 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>GA4 Audience Exclusion Test Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-652Z7G2TSM"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+    <!-- Google tag (gtag.js) with Debug Mode enabled -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-652Z7G2TSM"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-    // Connects directly to GA4 DebugView
-    gtag('config', 'G-652Z7G2TSM', { 'debug_mode': true });
-  </script>
+      // Initializing GA4 with Debug Mode ON
+      gtag('config', 'G-652Z7G2TSM', {
+        'debug_mode': true
+      });
+    </script>
 </head>
-<body style="font-family: Arial, sans-serif; text-align: center; margin-top: 50px;">
+<body>
 
-  <h1>GA4 Audience Exclusion & Internal Traffic Test</h1>
-  <p>Click the buttons below to fire test events into GA4.</p>
+    <h1>Welcome to My Website</h1>
+    
+    <!-- Example custom event trigger button -->
+    <button id="testEventBtn">Trigger Test Event</button>
 
-  <!-- STEP 1: INCLUDE EVENT -->
-  <div style="margin-bottom: 20px;">
-    <h3>Step 1: Fire Include Event</h3>
-    <button onclick="sendAddToCart()" style="padding: 12px 24px; font-size: 16px; background-color: #007bff; color: white; border: none; cursor: pointer;">
-      Trigger add_to_cart
-    </button>
-  </div>
-
-  <!-- STEP 2: EXCLUDE EVENT -->
-  <div>
-    <h3>Step 2: Fire Exclude Event</h3>
-    <button onclick="sendPurchase()" style="padding: 12px 24px; font-size: 16px; background-color: #28a745; color: white; border: none; cursor: pointer;">
-      Trigger purchase
-    </button>
-  </div>
-
-  <script>
-    // Step 1: Fire Add to Cart
-    function sendAddToCart() {
-      gtag('event', 'add_to_cart', {
-        'mock_event_test': 'add_to_cart',
-        'value': 29.99,
-        'currency': 'USD',
-        'items': [{ 'item_id': 'ITEM_001', 'item_name': 'Test Item' }]
+    <script>
+      // Optional: Example script to trigger a custom event on click
+      document.getElementById('testEventBtn').addEventListener('click', function() {
+        gtag('event', 'test_button_click', {
+          'event_category': 'testing',
+          'event_label': 'debug_view_test'
+        });
+        console.log('Test event sent to GA4 DebugView');
       });
-      alert('Step 1 Sent: add_to_cart');
-    }
-
-    // Step 2: Fire Purchase
-    function sendPurchase() {
-      gtag('event', 'purchase', {
-        'transaction_id': 'TRANS_' + Date.now(),
-        'mock_event_test': 'purchase',
-        'value': 29.99,
-        'currency': 'USD',
-        'items': [{ 'item_id': 'ITEM_001', 'item_name': 'Test Item' }]
-      });
-      alert('Step 2 Sent: purchase');
-    }
-  </script>
+    </script>
 
 </body>
 </html>
-
