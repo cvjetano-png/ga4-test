@@ -29,6 +29,7 @@
     // Trigger GA4 add_to_cart event
     function triggerAddToCart() {
       gtag('event', 'add_to_cart', {
+        'mock_event_text': 'add_to_cart', // Custom parameter for GA4 Custom Dimension
         currency: 'USD',
         value: 29.99,
         items: [
@@ -47,6 +48,7 @@
     // Trigger GA4 purchase event
     function triggerPurchase() {
       gtag('event', 'purchase', {
+        'mock_event_text': 'purchase', // Custom parameter for GA4 Custom Dimension
         transaction_id: 'T_' + Math.floor(Math.random() * 1000000), // Generates unique ID
         value: 34.99,
         tax: 2.50,
