@@ -1,40 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
+  <meta charset="UTF-8">
+  <title>GA4 Direct Event Test Page</title>
 
-    <!-- Google tag (gtag.js) with Debug Mode enabled -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-652Z7G2TSM"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-652Z7G2TSM"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-      // Initializing GA4 with Debug Mode ON
-      gtag('config', 'G-652Z7G2TSM', {
-        'debug_mode': true
-      });
-    </script>
+    // Configures GA4 and forces Debug Mode for DebugView testing
+    gtag('config', 'G-652Z7G2TSM', {
+      'debug_mode': true
+    });
+  </script>
 </head>
 <body>
 
-    <h1>Welcome to My Website</h1>
-    
-    <!-- Example custom event trigger button -->
-    <button id="testEventBtn">Trigger Test Event</button>
+  <h2>GA4 Direct Event Testing Panel</h2>
 
-    <script>
-      // Optional: Example script to trigger a custom event on click
-      document.getElementById('testEventBtn').addEventListener('click', function() {
-        gtag('event', 'test_button_click', {
-          'event_category': 'testing',
-          'event_label': 'debug_view_test'
-        });
-        console.log('Test event sent to GA4 DebugView');
+  <!-- Action Buttons -->
+  <button id="btn-add-to-cart" onclick="triggerAddToCart()">Add to Cart</button>
+  <button id="btn-purchase" onclick="triggerPurchase()">Simulate Purchase</button>
+
+  <script>
+    // Trigger GA4 add_to_cart event
+    function triggerAddToCart() {
+      gtag('event', 'add_to_cart', {
+        currency: 'USD',
+        value: 29.99,
+        items: [
+          {
+            item_id: 'SKU_12345',
+            item_name: 'Classic T-Shirt',
+            item_category: 'Apparel',
+            price: 29.99,
+            quantity: 1
+          }
+        ]
       });
-    </script>
+      console.log('add_to_cart sent directly to GA4');
+    }
+
+    // Trigger GA4 purchase event
+    function triggerPurchase() {
+      gtag('event', 'purchase', {
+        transaction_id: 'T_' + Math.floor(Math.random() * 1000000), // Generates unique ID
+        value: 34.99,
+        tax: 2.50,
+        shipping: 2.50,
+        currency: 'USD',
+        items: [
+          {
+            item_id: 'SKU_12345',
+            item_name: 'Classic T-Shirt',
+            item_category: 'Apparel',
+            price: 29.99,
+            quantity: 1
+          }
+        ]
+      });
+      console.log('purchase sent directly to GA4');
+    }
+  </script>
 
 </body>
 </html>
