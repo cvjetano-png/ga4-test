@@ -11,7 +11,19 @@
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    // Configures GA4 and forces Debug Mode for DebugView testing
+    // Add to Cart
+gtag('event', 'add_to_cart', {
+  'mock_event_test': 'add_to_cart', // Match key to GA4
+  currency: 'USD',
+  value: 29.99
+});
+
+// Purchase
+gtag('event', 'purchase', {
+  'mock_event_test': 'purchase', // Match key to GA4
+  currency: 'USD',
+  value: 34.99
+});// Configures GA4 and forces Debug Mode for DebugView testing
     gtag('config', 'G-652Z7G2TSM', {
       'debug_mode': true
     });
